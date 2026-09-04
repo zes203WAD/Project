@@ -1,0 +1,14 @@
+.slide-in-animation {
+    animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.accordion-content {
+    transition: all 0.3s ease-in-out;
+}
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+    outline: 3px solid #6366f1;
+    outline-offset: 2px;
+}
