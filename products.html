@@ -1,213 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pro-Retail | Products</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shop - Pro Retail</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+<body class="bg-gray-50 font-sans">
 
-    <header class="bg-white border-b border-gray-200 shadow-sm">
-<nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header class="bg-white shadow sticky top-0 z-20">
 
-<a href="index.html" class="text-xl font-bold text-indigo-600">PRO-RETAIL.</a>
+        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
 
-<div class="hidden md:flex items-center space-x-8">
+        <a href="index.html" class="text-2xl font-bold">PRO-RETAIL.</a>
+         <div class="flex gap-4 items-center">
+                <a href="index.html" class="text-gray-600 hover:text-black">Home</a>
+                <a href="products.html" class="font-bold border-b-2 border-black">Shop</a>
+                <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
+                <button id="cart-btn" class="relative bg-black text-white px-4 py-2 rounded-lg">
+         Cart <span id="cart-count" class="ml-2 bg-white text-black text-xs px-2 py-0.5 rounded-full">0</span>
+          </button>
+         </div>
+        </nav>
+     </header>
 
-<a href="index.html" class="text-gray-600 hover:text-indigo-600">Home</a>
+    <!-- Filters -->
+    <section class="max-w-7xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-2">Our Products</h1>
+        <p class="text-gray-500 mb-6">Browse and filter in real-time</p>
 
-<a href="products.html" class="font-medium text-indigo-600" aria-current="page">Products</a>
-
-<a href="contact.html" class="text-gray-600 hover:text-indigo-600">Contact</a>
-
+    <div class="flex flex-wrap gap-3 mb-8" id="filter-buttons">
+    <button data-filter="all" class="filter-btn active bg-black text-white px-5 py-2 rounded-full">All Bags</button>
+    <button data-filter="crossbody" class="filter-btn bg-white border px-5 py-2 rounded-full">Crossbody</button>
+    <button data-filter="tote" class="filter-btn bg-white border px-5 py-2 rounded-full">Tote</button>
+    <button data-filter="shoulder" class="filter-btn bg-white border px-5 py-2 rounded-full">Shoulder</button>
+    <button data-filter="clutch" class="filter-btn bg-white border px-5 py-2 rounded-full">Clutch</button>
 </div>
 
-<button id="theme-toggle" class="p-2 rounded-lg bg-gray-100 text-gray-600">🌓</button>
-
-</nav>
-
-</header>
-
-
-
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-grow w-full">
-
-<div class="mb-8 slide-in-animation">
-
-<h1 class="text-3xl font-bold mb-2">Our Collection</h1>
-
-<p class="text-sm text-gray-500">6 premium items selected for 203WAD prototype. All images have alt text.</p>
-
-</div>
-
-        //32
-        
-<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500" alt="Black quilted mini shoulder bag with gold chain" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-<h2 class="font-semibold">Quilted Mini Shoulder Bag</h2>
-
-<p class="text-sm text-gray-500 mt-1">Black leather, gold GG logo</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$89.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=500" alt="Brown leather tote bag" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-<h2 class="font-semibold">Classic Leather Tote</h2>
-
-<p class="text-sm text-gray-500 mt-1">Brown, fits laptop 14 inch</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$120.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500" alt="White crossbody bag" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-<h2 class="font-semibold">White Crossbody Bag</h2>
-
-<p class="text-sm text-gray-500 mt-1">Small, everyday use</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$65.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=500" alt="Black backpack with front pocket" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-<h2 class="font-semibold">Mini Backpack</h2>
-
-<p class="text-sm text-gray-500 mt-1">Black nylon, water resistant</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$95.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500" alt="Beige handbag with top handle" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-<h2 class="font-semibold">Beige Top Handle Bag</h2>
-
-<p class="text-sm text-gray-500 mt-1">Structured, office wear</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$110.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-
-
-<article class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition">
-
-<img src="https://au.louisvuitton.com/images/is/image/lv/1/PP_VP_L/louis-vuitton-speedy-bandouliere-20--M28529_PM2_Front%20view.jpg" alt="Pink small shoulder bag" class="w-full h-56 object-cover">
-
-<div class="p-4">
-
-
-<h2 class="font-semibold">Pink LV Bag</h2>
-
-<p class="text-sm text-gray-500 mt-1">Soft pink, chain strap</p>
-
-<div class="flex items-center justify-between mt-4">
-
-<span class="font-bold text-indigo-600">$75.00</span>
-
-<button class="add-to-cart bg-gray-900 text-white text-xs px-4 py-2 rounded-lg">Add to Cart</button>
-
-</div>
-
-</div>
-
-</article>
-
-</section>
-
-</main>
-
-
-
-
-
-<footer class="bg-gray-100 border-t border-gray-200 py-6 mt-auto">
-
-<div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
-
-&copy; 2026 Pro-Retail 203WAD.
-
-</div>
-
-</footer>
-
-
-<script src="js/main.js"></script>
-</body>
+        <!-- Product Grid - fluid responsive -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Products will be added by JS -->
+        </div>
+    </section>
+
+    <!-- Cart Drawer Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black/50 hidden z-30"></div>
+
+    <!-- Slide-out Cart Drawer -->
+    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col">
+        <div class="p-6 border-b flex justify-between items-center">
+            <h2 class="text-xl font-bold">Your Cart (<span id="drawer-count">0</span>)</h2>
+            <button id="close-cart" class="text-2xl">&times;</button>
+        </div>
+
+        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <p id="empty-msg" class="text-gray-400 text-center mt-20">Your cart is empty</p>
+        </div>
+
+        <div class="p-6 border-t bg-gray-50">
+            <div class="flex justify-between text-lg font-bold mb-4">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button id="checkout-btn" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800">Checkout</button>
+            <p class="text-xs text-gray-500 text-center mt-2">Client-side demo only</p>
+        </div>
+    </div>
+<script src="js/products.js"></script>
+   </body>
 </html>
