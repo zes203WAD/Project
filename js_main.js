@@ -1,95 +1,67 @@
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function renderFeatured(filter = 'all') {
+  const grid = document.getElementById('featured-grid');
+  if (!grid) return;
+  
+  let filtered = filter === 'all' ? products.slice(0,4) : products.filter(p => p.category === filter).slice(0,4);
+  
+  grid.innerHTML = filtered.map(p => `
+    <div class="product-card">
+      <div class="product-img"><img src="${p.image}" alt="${p.name}"></div>
+      <div class="product-info">
+        <h4>${p.name}</h4>
+        <span class="category">${p.category} Bag</span>
+        <div class="product-bottom">
+          <strong>$${p.price}</strong>
+          <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  const existing = cart.find(item => item.id === id);
+  if (existing) existing.qty++; else cart.push({...product, qty: 1});
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartUI();
+}
+
+function updateCartUI() {
+  document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('cart-total').textContent = cart.reduce((s,i)=>s+i.price*i.qty,0);
+  document.getElementById('cart-items').innerHTML = cart.map(i=>`<div class="cart-item"><span>${i.name} x${i.qty}</span><span>$${i.price*i.qty}</span></div>`).join('') || '<p style="padding:20px;color:#888;">Cart empty</p>';
+}
+
+function toggleCart() {
+  document.getElementById('cart-drawer').classList.toggle('open');
+}
+
+// filter pills 
 document.addEventListener('DOMContentLoaded', () => {
-
-//mobile
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-
-  if (mobileMenuBtn && mobileMenu) {
-  mobileMenuBtn.addEventListener('click', () => {
-  const isOpen = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
-  mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-    mobileMenu.classList.toggle('hidden');
- });
-    }
-
-    // dark/light mode
-    const themeToggle = document.getElementById('theme-toggle');
-    const savedTheme = localStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            
-            if (document.documentElement.classList.contains('dark')) {
-                localStorage.setItem('theme', 'dark');
-            } else {
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    }
-
-    // accordion for index page
-    const accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(header => {
-      
-      header.addEventListener('click', () => {
-      
-        const content = header.nextElementSibling;
-        
-        const icon = header.querySelector('.icon');
-
-        
-        
-        if (content) {
-        
-          content.classList.toggle('hidden');
-          
-        }
-        
-        if (icon) {
-        
-          icon.classList.toggle('rotate-180');
-          
-        }
-        
-      });
-    });
-
-    
-  // cart count 
-  
-  const cartButtons = document.querySelectorAll('.add-to-cart');
-  
-  const cartCount = document.getElementById('cart-count');
-  
-  let count = 0;
-
-  
-  
-  cartButtons.forEach(btn => {
-  
+  renderFeatured();
+  updateCartUI();
+  document.querySelectorAll('.pill').forEach(btn => {
     btn.addEventListener('click', () => {
-    
-      count++;
-      
-      if (cartCount) {
-      
-        cartCount.textContent = count;
-        
-      }
-      
-      btn.textContent = "Added!";
-      
-      setTimeout(() => {
-      
-        btn.textContent = "Add to Cart";
-        
-      }, 1000);
-      
+      document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderFeatured(btn.dataset.filter);
     });
-    });
+  });
 });
+
+
+const contactForm = document.getElementById('contact-form');
+if(contactForm){
+  contactForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    document.getElementById('form-success-banner').style.display = 'block';
+    this.reset();
+    setTimeout(()=> {
+      document.getElementById('form-success-banner').style.display = 'none';
+    }, 3000);
+  });
+}
