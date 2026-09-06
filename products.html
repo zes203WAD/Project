@@ -1,74 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-<meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Shop - Pro Retail</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop - ROYALE CARRY</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gray-50 font-sans">
-
-    <header class="bg-white shadow sticky top-0 z-20">
-
-        <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-
-        <a href="index.html" class="text-2xl font-bold">PRO-RETAIL.</a>
-         <div class="flex gap-4 items-center">
-                <a href="index.html" class="text-gray-600 hover:text-black">Home</a>
-                <a href="products.html" class="font-bold border-b-2 border-black">Shop</a>
-                <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
-                <button id="cart-btn" class="relative bg-black text-white px-4 py-2 rounded-lg">
-         Cart <span id="cart-count" class="ml-2 bg-white text-black text-xs px-2 py-0.5 rounded-full">0</span>
-          </button>
-         </div>
-        </nav>
-     </header>
-
-    <!-- Filters -->
-    <section class="max-w-7xl mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-2">Our Products</h1>
-        <p class="text-gray-500 mb-6">Browse and filter in real-time</p>
-
-    <div class="flex flex-wrap gap-3 mb-8" id="filter-buttons">
-    <button data-filter="all" class="filter-btn active bg-black text-white px-5 py-2 rounded-full">All Bags</button>
-    <button data-filter="crossbody" class="filter-btn bg-white border px-5 py-2 rounded-full">Crossbody</button>
-    <button data-filter="tote" class="filter-btn bg-white border px-5 py-2 rounded-full">Tote</button>
-    <button data-filter="shoulder" class="filter-btn bg-white border px-5 py-2 rounded-full">Shoulder</button>
-    <button data-filter="clutch" class="filter-btn bg-white border px-5 py-2 rounded-full">Clutch</button>
-</div>
-
-        <!-- Product Grid - fluid responsive -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            <!-- Products will be added by JS -->
-        </div>
-    </section>
-
-    <!-- Cart Drawer Overlay -->
-    <div id="cart-overlay" class="fixed inset-0 bg-black/50 hidden z-30"></div>
-
-    <!-- Slide-out Cart Drawer -->
-    <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-[400px] bg-white shadow-2xl z-40 transform translate-x-full transition-transform duration-300 flex flex-col">
-        <div class="p-6 border-b flex justify-between items-center">
-            <h2 class="text-xl font-bold">Your Cart (<span id="drawer-count">0</span>)</h2>
-            <button id="close-cart" class="text-2xl">&times;</button>
-        </div>
-
-        <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-            <p id="empty-msg" class="text-gray-400 text-center mt-20">Your cart is empty</p>
-        </div>
-
-        <div class="p-6 border-t bg-gray-50">
-            <div class="flex justify-between text-lg font-bold mb-4">
-                <span>Total:</span>
-                <span id="cart-total">$0.00</span>
-            </div>
-            <button id="checkout-btn" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800">Checkout</button>
-            <p class="text-xs text-gray-500 text-center mt-2">Client-side demo only</p>
-        </div>
+<body class="bg-[#F5F5DC]">
+<header class="bg-white shadow sticky top-0 z-20">
+  <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-bold">ROYALE CARRY.</a>
+    <div class="flex gap-6 items-center">
+      <a href="index.html" class="text-gray-600">Home</a>
+      <a href="products.html" class="font-bold border-b-2 border-black" aria-current="page">Shop</a>
+      <a href="contact.html" class="text-gray-600">Contact</a>
+      <button id="cart-btn" class="bg-black text-white px-4 py-2 rounded-full text-sm">Cart <span id="cart-count" class="bg-white text-black px-2 rounded-full text-xs ml-1">0</span></button>
     </div>
-<script src="products.js"></script>
-   </body>
+  </nav>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-8">
+  <section class="text-center py-10"><h1 class="text-4xl font-extrabold">Shop All Bags</h1><p class="text-gray-500 mt-2">Filter by category - Dynamic content update</p></section>
+  <section>
+    <div id="filter-buttons" class="filter-wrap mb-6">
+      <button data-filter="all" class="filter-btn active bg-black text-white px-5 py-2 rounded-full text-sm">All Bags</button>
+      <button data-filter="tote" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Tote</button>
+      <button data-filter="crossbody" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Crossbody</button>
+      <button data-filter="shoulder" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Shoulder</button>
+      <button data-filter="clutch" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Clutch</button>
+    </div>
+   <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  </section>
+</main>
+<footer class="bg-white border-t mt-12 py-6"><div class="max-w-7xl mx-auto px-4 flex justify-between text-sm text-gray-500 footer-inner"><p>© 2025 ROYALE CARRY</p><nav class="flex gap-4"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="contact.html">Contact</a></nav></div></footer>
+<div id="cart-overlay" class="fixed inset-0 bg-black/50 hidden z-30"></div>
+<div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-40 translate-x-full transition-transform flex flex-col" role="dialog" aria-label="Cart"><div class="p-6 border-b flex justify-between"><h2 class="font-bold">Cart (<span id="drawer-count">0</span>)</h2><button id="close-cart" aria-label="Close">&times;</button></div><div id="cart-items" class="flex-1 p-6 overflow-auto"></div><div class="p-6 border-t"><div class="flex justify-between font-bold"><span>Total:</span><span id="cart-total">$0</span></div><button id="checkout-btn" class="w-full mt-4 bg-black text-white py-3 rounded-full">Checkout</button></div></div>
+<script src="js/products.js"></script>
+</body>
 </html>
