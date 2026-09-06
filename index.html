@@ -3,55 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pro Retail - Luxury Bags</title>
+  <title>Home - Pro Retail</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">PRO-RETAIL.</div>
-      <nav class="nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="products.html">Shop</a>
-    <a href="contact.html">Contact</a>
-        <button class="cart-btn" onclick="toggleCart()">Cart <span id="cart-count">0</span></button>
-    </nav>
+<body class="bg-[#F5F5DC]">
+
+<header class="bg-white shadow sticky top-0 z-20">
+  <nav class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+    <a href="index.html" class="text-2xl font-bold">ROYALE CARRY.</a>
+    <div class="flex gap-6 items-center">
+      <a href="index.html" class="font-bold border-b-2 border-black" aria-current="page">Home</a>
+      <a href="products.html" class="text-gray-600 hover:text-black">Shop</a>
+      <a href="contact.html" class="text-gray-600 hover:text-black">Contact</a>
+      <button id="cart-btn" class="bg-black text-white px-4 py-2 rounded-full text-sm">Cart <span id="cart-count" class="bg-white text-black px-2 rounded-full text-xs ml-1">0</span></button>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <main class="container">
+<main class="max-w-7xl mx-auto px-4">
+  <!-- Hero -->
+  <section class="text-center py-16">
+    <h1 class="text-5xl font-extrabold">Timeless Design,<br>Built To Last</h1>
+    <p class="text-gray-500 mt-3">ROYALE CARRY - Luxury Bags for Everyday</p>
+    <a href="products.html" class="inline-block mt-6 bg-black text-white px-8 py-3 rounded-full">Shop All</a>
+  </section>
 
-    <!-- PRODUCTS Page Style -->
-    <section class="home-hero">
-      <h1>Timeless Design,<br>Built To Last</h1>
-      <p>Curated luxury totes, shoulder bags and clutches</p>
-      <a href="products.html" class="btn-black">Shop All Bags</a>
-    </section>
+  <!-- Featured -->
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Featured Bags</h2>
+    <div id="filter-buttons" class="filter-wrap mb-6">
+      <button data-filter="all" class="filter-btn active bg-black text-white px-5 py-2 rounded-full text-sm">All</button>
+      <button data-filter="tote" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Tote</button>
+      <button data-filter="crossbody" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Crossbody</button>
+      <button data-filter="shoulder" class="filter-btn bg-white border px-5 py-2 rounded-full text-sm">Shoulder</button>
+    </div>
+  <div id="featured-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+  </section>
 
-  <!-- Filter pill -->
-    <section class="filter-pills">
-      
-      <button class="pill" data-filter="crossbody">Crossbody</button>
-      <button class="pill" data-filter="tote">Tote</button>
-      <button class="pill" data-filter="shoulder">Shoulder</button>
-      <button class="pill" data-filter="clutch">Clutch</button>
-    </section>
+  <!-- FAQ Accordion - Interactive -->
+  <section class="mt-16 max-w-3xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4">FAQ</h2>
+    <article class="bg-white border rounded-xl mb-2">
+      <button class="faq-btn w-full text-left p-4 font-medium flex justify-between"><span>Do you offer free shipping?</span><span>+</span></button>
+      <div class="faq-content hidden p-4 pt-0 text-sm text-gray-600">Yes, free shipping on orders over $500.</div>
+    </article>
+    <article class="bg-white border rounded-xl mb-2">
+      <button class="faq-btn w-full text-left p-4 font-medium flex justify-between"><span>Is this site responsive?</span><span>+</span></button>
+      <div class="faq-content hidden p-4 pt-0 text-sm text-gray-600">Yes - Mobile, Tablet, Desktop using Flexbox + Grid.</div>
+    </article>
+  </section>
+</main>
 
-    <!-- FEATURED PRODUCTS -->
-    <section>
-      <div class="products-grid" id="featured-grid"></div>
-    </section>
-  </main>
-
-  <!-- CART DRAWER  -->
-  <div id="cart-drawer" class="cart-drawer">
-    <div class="cart-header"><h3>Your Cart</h3><button onclick="toggleCart()">×</button></div>
-    <div id="cart-items"></div>
-    <div class="cart-footer"><p>Total: $<span id="cart-total">0</span></p><button class="btn-black full">Checkout</button></div>
+<footer class="bg-white border-t mt-12 py-6">
+  <div class="max-w-7xl mx-auto px-4 flex justify-between text-sm text-gray-500 footer-inner">
+    <p>© 2025 ROYALE CARRY | CIHE ICT203 Retail</p>
+    <nav class="flex gap-4"><a href="index.html">Home</a><a href="products.html">Shop</a><a href="contact.html">Contact</a></nav>
   </div>
+</footer>
 
-  <script src="products.js"></script>
-  <script src="main.js"></script>
+<!-- Cart Modal -->
+<div id="cart-overlay" class="fixed inset-0 bg-black/50 hidden z-30"></div>
+<div id="cart-drawer" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-40 translate-x-full transition-transform flex flex-col" role="dialog" aria-label="Cart">
+  <div class="p-6 border-b flex justify-between"><h2 class="font-bold">Cart (<span id="drawer-count">0</span>)</h2><button id="close-cart" aria-label="Close">&times;</button></div>
+  <div id="cart-items" class="flex-1 p-6 overflow-auto"></div>
+  <div class="p-6 border-t"><div class="flex justify-between font-bold"><span>Total:</span><span id="cart-total">$0</span></div><button id="checkout-btn" class="w-full mt-4 bg-black text-white py-3 rounded-full">Checkout</button></div>
+</div>
+
+<script src="js/main.js"></script>
 </body>
 </html>
